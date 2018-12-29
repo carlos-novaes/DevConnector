@@ -1,22 +1,22 @@
 const express = require("express"),
     mongoose = require("mongoose"),
-    passport = require("passport");
+    passport = require("passport")
 
 
-const users = require("./routes/api/users");
-const profile = require("./routes/api/profile");
-const posts = require("./routes/api/posts");
+const users = require("./routes/api/users")
+const profile = require("./routes/api/profile")
+const posts = require("./routes/api/posts")
 
-const app = express();
+const app = express()
 
 // Express middleware
 app.use(express.urlencoded({
     extended: false
 }));
-app.use(express.json());
+app.use(express.json())
 
 // DB config
-const db = require("./config/keys").mongoURI;
+const db = require("./config/keys").mongoURI
 
 // Connect to MongoDB
 mongoose.connect(db, {
@@ -32,11 +32,11 @@ app.use(passport.initialize())
 require("./config/passport")(passport)
 
 // Use Routes
-app.use("/api/users", users);
-app.use("/api/profile", profile);
-app.use("/api/posts", posts);
+app.use("/api/users", users)
+app.use("/api/profile", profile)
+app.use("/api/posts", posts)
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000
 
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(port, () => console.log(`Server running on port ${port}`))
