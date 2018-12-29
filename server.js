@@ -7,6 +7,12 @@ const posts = require("./routes/api/posts");
 
 const app = express();
 
+// Express middleware
+app.use(express.urlencoded({
+    extended: false
+}));
+app.use(express.json());
+
 // DB config
 const db = require("./config/keys").mongoURI;
 
